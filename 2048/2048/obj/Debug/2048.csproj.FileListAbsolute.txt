@@ -1,0 +1,17 @@
+C:\Users\Evil\Desktop\c-sharp\2048\2048\bin\Debug\2048.exe.config
+C:\Users\Evil\Desktop\c-sharp\2048\2048\bin\Debug\2048.exe
+C:\Users\Evil\Desktop\c-sharp\2048\2048\bin\Debug\2048.pdb
+C:\Users\Evil\Desktop\c-sharp\2048\2048\obj\Debug\_2048.Properties.Resources.resources
+C:\Users\Evil\Desktop\c-sharp\2048\2048\obj\Debug\2048.csproj.GenerateResource.Cache
+C:\Users\Evil\Desktop\c-sharp\2048\2048\obj\Debug\2048.exe
+C:\Users\Evil\Desktop\c-sharp\2048\2048\obj\Debug\2048.pdb
+C:\Users\Evil\Desktop\c-sharp\2048\2048\obj\Debug\_2048.Form1.resources
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\bin\Debug\2048.exe.config
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\2048.exe
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\2048.pdb
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\bin\Debug\2048.exe
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\bin\Debug\2048.pdb
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\2048.csprojResolveAssemblyReference.cache
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\_2048.Form1.resources
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\_2048.Properties.Resources.resources
+C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\2048.csproj.GenerateResource.Cache
