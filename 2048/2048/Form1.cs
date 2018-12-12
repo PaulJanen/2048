@@ -1,28 +1,33 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using CommandPattern;
 
 namespace _2048
 {
-    enum Kursas
+    enum Directions
     {
-        Kaire, Desine, Virsus, Apacia, Nera
+        Left, Right, Top, Bottom, Non
     }
 
     public partial class Form1 : Form
     {
-        private Kursas kryptis;
+        private Directions direction;
         LabelUtility labelUtility;
-        JudejimoLogika judejimoLogika;
-        LangeliuAnimacijos langeliuAnimacijos;
-        public Label[] leibeliai;
-        public int xPozic;
-        public int yPozic;
-        public int[][] pozicija;
-        public bool[][] pozicijosSavybe;
-        public bool[][] naujoLangelioAnimacija;
-        public int ejimuSkaicius;
+        BoxAnimations boxAnimations;
+        public Label[] boxes;
+        public int xPos;
+        public int yPos;
+        public int[][] pos;
+        public bool[][] posFeature;
+        public bool[][] newBoxAnimation;
+        public int movementCount;
         public int galimiejimai;
+        private Command upButton;
+        private Command downButton;
+        private Command leftButton;
+        private Command rightButton;
+
 
         public Form1()
         {
@@ -31,189 +36,180 @@ namespace _2048
             
         public void Form1_Load(object sender, EventArgs e)
         {
-            KintamuInicializavimas();
+            InitializeVariables();
 
-            Zaidimopradzia();
+            GameBeginning();
         }
 
-       private void KintamuInicializavimas()
+       private void InitializeVariables()
         {
-            kryptis = Kursas.Nera;
-            leibeliai = new Label[16];
-            xPozic = 0;
-            yPozic = 0;
-            pozicija = new int[4][];
-            pozicijosSavybe = new bool[4][];
-            naujoLangelioAnimacija = new bool[4][];
-            ejimuSkaicius = 0;
+            direction = Directions.Non;
+            boxes = new Label[16];
+            xPos = 0;
+            yPos = 0;
+            pos = new int[4][];
+            posFeature = new bool[4][];
+            newBoxAnimation = new bool[4][];
+            movementCount = 0;
             galimiejimai = 1;
 
             labelUtility = new LabelUtility(this);
-            labelUtility.DuotiLeibeliuRef(out leibeliai);
-            judejimoLogika = new JudejimoLogika(this, labelUtility);
-            langeliuAnimacijos = new LangeliuAnimacijos(this);
+            labelUtility.GiveLabelReferences(out boxes,this);
+            CreateButtonLayout();
+            boxAnimations = new BoxAnimations();
         }
 
-        public void Zaidimopradzia()
+        void CreateButtonLayout()
         {
-            Pabaiga.Visible = false;
-            for (int i = 0; i < pozicija.Length; i++)
+            upButton = new GoUp();
+            downButton = new GoDown();
+            leftButton = new GoLeft();
+            rightButton = new GoRight();
+        }
+
+
+        public void GameBeginning()
+        {
+            gameEnd.Visible = false;
+            for (int i = 0; i < pos.Length; i++)
             {
-                pozicija[i] = new int[4];
+                pos[i] = new int[4];
             }
-            for (int i = 0; i < pozicijosSavybe.Length; i++)
+            for (int i = 0; i < posFeature.Length; i++)
             {
-                pozicijosSavybe[i] = new bool[4];
-                naujoLangelioAnimacija[i] = new bool[4];
+                posFeature[i] = new bool[4];
+                newBoxAnimation[i] = new bool[4];
             }
             for (int i = 0; i<4;i++)
             {
                 for (int k = 0; k<4;k++)
                 {
-                    naujoLangelioAnimacija[i][k] = false;
+                    newBoxAnimation[i][k] = false;
                 }
             }
             
-            labelUtility.LabelSurasymas();
-            Naujaslangelis();
-            Naujaslangelis();
+            labelUtility.GiveLabelText(this);
+            NewBox();
+            NewBox();
         
             
-            labelUtility.LabelSurasymas();
+            labelUtility.GiveLabelText(this);
 
+        }
+
+        private void AnimateAndCreateNewBox()
+        {
+            boxAnimations.AnimateTakenBox(posFeature, boxes);
+            labelUtility.GiveLabelText(this);
+            NewBox();
+            direction = Directions.Non;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-                if (kryptis == Kursas.Apacia)
-                {
-                    ejimuSkaicius++;
-                    langeliuAnimacijos.LangelisUzgesta();
-                    int x = 2;
-                    int xx = -1;
-                    labelUtility.LabelSurasymas();
-                    judejimoLogika.JudejimasApacion(x, xx);
-                    langeliuAnimacijos.UzimtasLangelis();
-                    labelUtility.LabelSurasymas();
-                    Naujaslangelis();
-                    kryptis = Kursas.Nera;
-                }
-                if (kryptis == Kursas.Virsus)
-                {
-                    ejimuSkaicius++;
-                    int x = 1;
-                    int xx = 4;
-                    labelUtility.LabelSurasymas();
-                    judejimoLogika.JudejimasVirsun(x, xx);
-                    langeliuAnimacijos.UzimtasLangelis();
-                    labelUtility.LabelSurasymas();
-                    Naujaslangelis();
-                    kryptis = Kursas.Nera;
-                }
-                if (kryptis == Kursas.Desine)
-                {
-                    ejimuSkaicius++;
-                    langeliuAnimacijos.LangelisUzgesta();
-                    int y = 2;
-                    int yy = -1;
-                    labelUtility.LabelSurasymas();
-                    judejimoLogika.JudejimasDesinen(y, yy);
-                    langeliuAnimacijos.UzimtasLangelis();
-                    labelUtility.LabelSurasymas();
-                    Naujaslangelis();
-                    kryptis = Kursas.Nera;
-                }
-                if (kryptis == Kursas.Kaire)
-                {
-                    ejimuSkaicius++;
-                    langeliuAnimacijos.LangelisUzgesta();
-                    int y = 1;
-                    int yy = 4;
-                    labelUtility.LabelSurasymas();
-                    judejimoLogika.JudejimasKairen(y, yy);
-                    langeliuAnimacijos.UzimtasLangelis();
-                    labelUtility.LabelSurasymas();
-                    Naujaslangelis();
-                    kryptis = Kursas.Nera;
-                }           
+            if(direction!=Directions.Non)
+            {
+                movementCount++;
+                boxAnimations.TurnOffPreviousNewSquare(newBoxAnimation, boxes);
+                labelUtility.GiveLabelText(this);
+            }
+            if (direction == Directions.Bottom)
+            {
+                downButton.Execute(2, -1, this, labelUtility);
+                AnimateAndCreateNewBox();
+            }
+            if (direction == Directions.Top)
+            {
+                upButton.Execute(1, 4, this, labelUtility);
+                AnimateAndCreateNewBox();
+            }
+            if (direction == Directions.Right)
+            {
+                rightButton.Execute(2, -1, this, labelUtility);
+                AnimateAndCreateNewBox();
+            }
+            if (direction == Directions.Left)
+            {
+                leftButton.Execute(1, 4, this, labelUtility);
+                AnimateAndCreateNewBox();
+            }           
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
-                kryptis = Kursas.Kaire;
+                direction = Directions.Left;
             }
             if (e.KeyCode == Keys.Right)
             {
-                kryptis = Kursas.Desine;
+                direction = Directions.Right;
             }
             if (e.KeyCode == Keys.Down)
             {
-                kryptis = Kursas.Apacia;
+                direction = Directions.Bottom;
             }
             if (e.KeyCode == Keys.Up)
             {
-                kryptis = Kursas.Virsus;
+                direction = Directions.Top;
             }
         }
         
-        private void Naujaslangelis()
+        private void NewBox()
         {
-            int tikrinimas;
-            if (ejimuSkaicius == 0)
+            int checkIfThereIsFreePosition;
+            if (movementCount == 0)
             {
-                tikrinimas = 1;
+                checkIfThereIsFreePosition = 1;
             }
             else
             {
-                tikrinimas = 0;
+                checkIfThereIsFreePosition = 0;
             }
-            for (int i = 0;i<4 && ejimuSkaicius !=0;i++)
+            for (int i = 0;i<4 && movementCount !=0;i++)
             {
                 for(int k = 0;k<4;k++)
                 {
-                    if(pozicijosSavybe[i][k]==false)
+                    if(posFeature[i][k]==false)
                     {
-                        tikrinimas = 1;
+                        checkIfThereIsFreePosition = 1;
                         k = 3;
                         i = 3;
                     }
                 }
             }
-            Random skaiciausPozicija = new Random();
-            if (tikrinimas == 1)
+            Random numberPos = new Random();
+            if (checkIfThereIsFreePosition == 1)
             {
                 for (int i = 0; i < 1; )
                 {
                     i++;
-                    xPozic = skaiciausPozicija.Next(0, 4);
-                    yPozic = skaiciausPozicija.Next(0, 4);
+                    xPos = numberPos.Next(0, 4);
+                    yPos = numberPos.Next(0, 4);
 
-                    if (pozicijosSavybe[xPozic][yPozic] == false)       //Pratestuota, veikia
+                    if (posFeature[xPos][yPos] == false)      
                     {
-                        pozicija[xPozic][yPozic] = 2;
-                        pozicijosSavybe[xPozic][yPozic] = true;
-                        naujoLangelioAnimacija[xPozic][yPozic] = true;
+                        pos[xPos][yPos] = 2;
+                        posFeature[xPos][yPos] = true;
+                        newBoxAnimation[xPos][yPos] = true;
                     }
                     else
                     {
                         i--;
                     }
-
                 }
             }
      
-            langeliuAnimacijos.NaujoLangelioAnimacija();
-            labelUtility.LabelSurasymas();
+            boxAnimations.NewBox(newBoxAnimation, boxes);
+            labelUtility.GiveLabelText(this);
         }  
 
-        private void Zaidimopabaiga()
+        private void EndGame()
         {
-            Pabaiga.Size = new Size(450, 500);
-            Pabaiga.Image = Image.FromFile("6.png");
-            Pabaiga.Visible = true;
-            Pabaiga.Location = new Point(50,50);
+            gameEnd.Size = new Size(450, 500);
+            gameEnd.Image = Image.FromFile("6.png");
+            gameEnd.Visible = true;
+            gameEnd.Location = new Point(50,50);
             Label PabaigosTekstas = new Label();
 
             PabaigosTekstas1.AutoSize = true;
@@ -231,7 +227,7 @@ namespace _2048
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Zaidimopabaiga();
+            EndGame();
         }
 
         private void PabaigosTekstas2_Click(object sender, EventArgs e)

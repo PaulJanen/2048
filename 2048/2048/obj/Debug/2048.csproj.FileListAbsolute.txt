@@ -15,3 +15,17 @@ C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\2048.csprojResolveAssembl
 C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\_2048.Form1.resources
 C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\_2048.Properties.Resources.resources
 C:\Users\Paulius\Desktop\c-sharpas\2048\2048\obj\Debug\2048.csproj.GenerateResource.Cache
+F:\Atsiskaitymui\2048\2048\bin\Debug\1.png
+F:\Atsiskaitymui\2048\2048\bin\Debug\18.png
+F:\Atsiskaitymui\2048\2048\bin\Debug\6.png
+F:\Atsiskaitymui\2048\2048\bin\Debug\8.png
+F:\Atsiskaitymui\2048\2048\bin\Debug\2048.exe.config
+F:\Atsiskaitymui\2048\2048\bin\Debug\2048.exe
+F:\Atsiskaitymui\2048\2048\bin\Debug\2048.pdb
+F:\Atsiskaitymui\2048\2048\obj\Debug\_2048.Form1.resources
+F:\Atsiskaitymui\2048\2048\obj\Debug\_2048.Properties.Resources.resources
+F:\Atsiskaitymui\2048\2048\obj\Debug\2048.csproj.GenerateResource.Cache
+F:\Atsiskaitymui\2048\2048\obj\Debug\2048.csproj.CoreCompileInputs.cache
+F:\Atsiskaitymui\2048\2048\obj\Debug\2048.exe
+F:\Atsiskaitymui\2048\2048\obj\Debug\2048.pdb
+F:\Atsiskaitymui\2048\2048\obj\Debug\2048.csprojResolveAssemblyReference.cache

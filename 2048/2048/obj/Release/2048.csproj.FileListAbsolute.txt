@@ -24,3 +24,17 @@ C:\Users\murku_000\Desktop\2048\2048\obj\Release\_2048.Properties.Resources.reso
 C:\Users\murku_000\Desktop\2048\2048\obj\Release\2048.csproj.GenerateResource.Cache
 C:\Users\murku_000\Desktop\2048\2048\obj\Release\2048.exe
 C:\Users\murku_000\Desktop\2048\2048\obj\Release\2048.pdb
+F:\Atsiskaitymui\2048\2048\bin\Release\1.png
+F:\Atsiskaitymui\2048\2048\bin\Release\18.png
+F:\Atsiskaitymui\2048\2048\bin\Release\6.png
+F:\Atsiskaitymui\2048\2048\bin\Release\8.png
+F:\Atsiskaitymui\2048\2048\bin\Release\2048.exe.config
+F:\Atsiskaitymui\2048\2048\bin\Release\2048.exe
+F:\Atsiskaitymui\2048\2048\bin\Release\2048.pdb
+F:\Atsiskaitymui\2048\2048\obj\Release\2048.csprojResolveAssemblyReference.cache
+F:\Atsiskaitymui\2048\2048\obj\Release\_2048.Form1.resources
+F:\Atsiskaitymui\2048\2048\obj\Release\_2048.Properties.Resources.resources
+F:\Atsiskaitymui\2048\2048\obj\Release\2048.csproj.GenerateResource.Cache
+F:\Atsiskaitymui\2048\2048\obj\Release\2048.csproj.CoreCompileInputs.cache
+F:\Atsiskaitymui\2048\2048\obj\Release\2048.exe
+F:\Atsiskaitymui\2048\2048\obj\Release\2048.pdb

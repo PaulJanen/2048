@@ -1,59 +1,53 @@
 ﻿using System.Drawing;
-
+using System.Windows.Forms;
 namespace _2048
 {
-    class LangeliuAnimacijos
+    public class BoxAnimations
     {
-        Form1 form1;
-
-        public LangeliuAnimacijos(Form1 form1)
+        public void NewBox(bool[][] whichBoxToAnimate, Label[] boxes)
         {
-            this.form1 = form1;
-        }
-
-
-        public void NaujoLangelioAnimacija()
-        {
-
-            for (int i = 0; i < form1.naujoLangelioAnimacija.Length; i++)
+            for (int i = 0; i < whichBoxToAnimate.Length; i++)
             {
                 for (int k = 0; k < 4; k++)
                 {
-                    if (form1.naujoLangelioAnimacija[i][k] == true)
+                    boxes[i * 4 + k].Image.Tag = "";
+                    if (whichBoxToAnimate[i][k] == true)
                     {
-                        form1.leibeliai[i * 4 + k].Image = Image.FromFile("18.png");
+                        boxes[i * 4 + k].Image = Image.FromFile("18.png");
+                        boxes[i * 4 + k].Image.Tag = "NewField";
                     }
                 }
             }
         }
 
-        public void LangelisUzgesta()
+        public void TurnOffPreviousNewSquare(bool[][] whichBoxToAnimate, Label[] boxes)
         {
-            for (int i = 0; i < form1.naujoLangelioAnimacija.Length; i++)
+            for (int i = 0; i < whichBoxToAnimate.Length; i++)
             {
                 for (int k = 0; k < 4; k++)
                 {
-                    if (form1.naujoLangelioAnimacija[i][k] == true)
+                    if (whichBoxToAnimate[i][k] == true)
                     {
-                        form1.naujoLangelioAnimacija[i][k] = false;
-                        form1.leibeliai[i * 4 + k].Image = Image.FromFile(@"1.png");
+                        whichBoxToAnimate[i][k] = false;
+                        boxes[i * 4 + k].Image = Image.FromFile(@"1.png");
+                        boxes[i * 4 + k].Image.Tag = "PreviousNewField";
                     }
                 }
             }
         }
-        public void UzimtasLangelis()
+        public void AnimateTakenBox(bool[][] whichBoxToAnimate, Label[] boxes)
         {
             for (int i = 0; i < 4; i++)
             {
                 for (int k = 0; k < 4; k++)
                 {
-                    if (form1.pozicijosSavybe[i][k] == true)
+                    if (whichBoxToAnimate[i][k] == true)
                     {
-                        form1.leibeliai[i * 4 + k].Image = Image.FromFile("8.png");
+                        boxes[i * 4 + k].Image = Image.FromFile("8.png");
                     }
-                    if (form1.pozicijosSavybe[i][k] == false)
+                    if (whichBoxToAnimate[i][k] == false)
                     {
-                        form1.leibeliai[i * 4 + k].Image = Image.FromFile("1.png");
+                        boxes[i * 4 + k].Image = Image.FromFile("1.png");
                     }
 
                 }

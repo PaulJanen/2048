@@ -47,12 +47,12 @@
             this.label44 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.Pabaiga = new System.Windows.Forms.PictureBox();
+            this.gameEnd = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.PabaigosTekstas1 = new System.Windows.Forms.Label();
             this.PabaigosTekstas2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.Pabaiga)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameEnd)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -233,13 +233,13 @@
             // 
             // Pabaiga
             // 
-            this.Pabaiga.Location = new System.Drawing.Point(23, 40);
-            this.Pabaiga.Name = "Pabaiga";
-            this.Pabaiga.Size = new System.Drawing.Size(112, 60);
-            this.Pabaiga.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pabaiga.TabIndex = 17;
-            this.Pabaiga.TabStop = false;
-            this.Pabaiga.Visible = false;
+            this.gameEnd.Location = new System.Drawing.Point(23, 40);
+            this.gameEnd.Name = "Pabaiga";
+            this.gameEnd.Size = new System.Drawing.Size(112, 60);
+            this.gameEnd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gameEnd.TabIndex = 17;
+            this.gameEnd.TabStop = false;
+            this.gameEnd.Visible = false;
             // 
             // label3
             // 
@@ -287,7 +287,7 @@
             this.Controls.Add(this.PabaigosTekstas1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Pabaiga);
+            this.Controls.Add(this.gameEnd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label44);
             this.Controls.Add(this.label43);
@@ -309,7 +309,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.Pabaiga)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameEnd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,7 +335,7 @@
         public System.Windows.Forms.Label label44;
         private System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.PictureBox Pabaiga;
+        public System.Windows.Forms.PictureBox gameEnd;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label PabaigosTekstas1;
